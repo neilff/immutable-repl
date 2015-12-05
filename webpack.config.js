@@ -1,6 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const definePlugin = new webpack.DefinePlugin({
+  __DEV__: JSON.stringify(JSON.parse(process.env.NODE_ENV !== 'production')),
+});
+
 function getEntrySources(sources) {
   if (process.env.NODE_ENV !== 'production') {
     sources.push('webpack-hot-middleware/client');
@@ -21,10 +25,12 @@ module.exports = {
   },
   plugins: process.env.NODE_ENV !== 'production' ?
     [
+      definePlugin,
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
     ] :
     [
+      definePlugin,
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.DefinePlugin({
         'process.env': {
