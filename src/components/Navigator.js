@@ -3,8 +3,6 @@ import React, { PropTypes } from 'react';
 import Dropdown from './Dropdown';
 import examples from '../utils/examples';
 
-console.log(examples);
-
 const Navigator = ({ onToggleExampleMenu, exampleMenuVisible, onCodeChange }) => {
   return (
     <div className="fixed top-0 left-0 right-0 bg-blue white" style={ styles.base }>
@@ -29,19 +27,32 @@ const Navigator = ({ onToggleExampleMenu, exampleMenuVisible, onCodeChange }) =>
                 style={ styles.dropdown }
                 isVisible={ exampleMenuVisible }
                 className="border bg-white p2 black">
-                List Functions
-                <ul className="mt1 mb2">
-                  {
-                    examples.list.map((i, idx) => {
-                      return (
-                        <li onClick={ () => {
-                          onCodeChange(i);
-                          onToggleExampleMenu();
-                        } }>{ idx }</li>
-                      );
-                    })
-                  }
-                </ul>
+                {
+                  examples.map(list => {
+                    return (
+                      <div>
+                      <h5 className="mt1">{ list.title }</h5>
+                        <ul className="mt1 mb2 list-reset">
+                          {
+                            list.examples.map((i, idx) => {
+                              return (
+                                <li
+                                  className="blue ml2"
+                                  style={ styles.link }
+                                  onClick={ () => {
+                                    onCodeChange(i);
+                                    onToggleExampleMenu();
+                                  } }>
+                                  { idx }
+                                </li>
+                              );
+                            })
+                          }
+                        </ul>
+                      </div>
+                    );
+                  })
+                }
               </Dropdown>
             </a>
             <a
@@ -83,6 +94,7 @@ const styles = {
   },
   dropdown: {
     top: '50px',
+    cursor: 'initial',
   },
   caret: {
     position: 'relative',
