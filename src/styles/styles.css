@@ -1,0 +1,18 @@
+@import 'basscss';
+@import '../../node_modules/react-codemirror/node_modules/codemirror/lib/codemirror.css';
+@import '../../node_modules/react-codemirror/node_modules/codemirror/theme/solarized.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+pre {
+  overflow: auto;
+}
