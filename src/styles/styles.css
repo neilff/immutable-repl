@@ -16,3 +16,7 @@ body {
 pre {
   overflow: auto;
 }
+
+.CodeMirror {
+  height: 500px !important;
+}

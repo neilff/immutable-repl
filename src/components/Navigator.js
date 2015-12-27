@@ -3,11 +3,18 @@ import React, { PropTypes } from 'react';
 import Dropdown from './Dropdown';
 import examples from '../utils/examples';
 
-const Navigator = ({ onToggleExampleMenu, exampleMenuVisible, onCodeChange }) => {
+const Navigator = (props) => {
+  const {
+    exampleMenuVisible,
+    isSplitView,
+    onCodeChange,
+    onToggleExampleMenu,
+    onToggleSplitView,
+  } = props;
+
   return (
     <div className="fixed top-0 left-0 right-0 bg-blue white" style={ styles.base }>
-      <div className="container">
-        <div className="clearfix flex">
+        <div className="flex">
           <div className="flex-auto">
             <div className="h3 inline-block mr2">
               <a
@@ -65,6 +72,20 @@ const Navigator = ({ onToggleExampleMenu, exampleMenuVisible, onCodeChange }) =>
           </div>
           <div className="flex-end">
             <a
+              href
+              target="_blank"
+              style={ styles.link }
+              className="inline-block white p2"
+              onClick={ (e) => {
+                e.preventDefault();
+                onToggleSplitView();
+              } }>
+              {
+                isSplitView ?
+                  'Vertical View' : 'Split View'
+              }
+            </a>
+            <a
               style={ styles.link }
               target="_blank"
               href="https://github.com/neilff/immutable-repl"
@@ -73,20 +94,24 @@ const Navigator = ({ onToggleExampleMenu, exampleMenuVisible, onCodeChange }) =>
             </a>
           </div>
         </div>
-      </div>
     </div>
   );
 };
 
 Navigator.displayName = 'Navigator';
 Navigator.propTypes = {
-  onToggleExampleMenu: PropTypes.func.isRequired,
+  exampleMenuVisible: PropTypes.bool.isRequired,
+  isSplitView: PropTypes.bool.isRequired,
   onCodeChange: PropTypes.func.isRequired,
+  onToggleExampleMenu: PropTypes.func.isRequired,
+  onToggleSplitView: PropTypes.func.isRequired,
 };
 
 const styles = {
   base: {
     zIndex: 999,
+    paddingLeft: '1.5rem',
+    paddingRight: '1.5rem',
   },
   link: {
     textDecoration: 'none',

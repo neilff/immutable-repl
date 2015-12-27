@@ -20,6 +20,9 @@ class CodeContainer extends Component {
             lineNumbers: true,
             mode: 'javascript',
           }}
+          style={{
+            height: 800,
+          }}
           className="block"
           value={ currentValue }
           onChange={ debounce(onChange, 300).bind(this) } />
