@@ -33,11 +33,10 @@ const App = (props) => {
     isSplitView,
   } = props;
 
-  const containerClass = `${ isSplitView ? 'flex-auto m1' : 'clearfix mt3 mb2' } border rounded`;
+  const containerClass = `${ isSplitView ? 'col col-6 m2' : 'm2' } border rounded`;
 
   return (
-    <main
-      className={ `${ isSplitView ? 'flex' : 'container' } mb4` }>
+    <main className={ `${ isSplitView ? '' : 'container' } mb4` }>
       <Navigator
         exampleMenuVisible={ exampleMenuVisible }
         onToggleExampleMenu={ onToggleExampleMenu }
