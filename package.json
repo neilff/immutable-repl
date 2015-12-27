@@ -1,6 +1,6 @@
 {
   "name": "immutable-repl",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A slim React & Redux starter project for quickly prototyping ideas",
   "engines": {
     "node": "4.x"
@@ -61,6 +61,7 @@
     "react-hot-loader": "^1.3.0",
     "react-redux": "^4.0.0",
     "redux": "^3.0.4",
+    "redux-localstorage": "^0.4.0",
     "redux-logger": "^2.0.4",
     "redux-thunk": "^1.0.0",
     "rimraf": "^2.4.3",
