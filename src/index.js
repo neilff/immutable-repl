@@ -13,7 +13,11 @@ import defaultExample from './utils/defaultExample';
 import App from './containers/App';
 import configureStore from './store/configureStore';
 
+// Attach Immutable to the window, and expose it's methods on the window
+// for short-form access.
 global.Immutable = Immutable;
+const immutableKeys = Object.keys(Immutable);
+immutableKeys.map(i => global[i] = Immutable[i]);
 
 const initialState = parse(window.location.search);
 
