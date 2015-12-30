@@ -7,7 +7,11 @@ const CompiledCode = ({ codeString }) => {
 
   try {
     /* eslint-disable */
-    result = eval(codeString);
+    result = eval(global.Babel.transform(codeString, {
+      presets: ['es2015', 'react', 'stage-0']
+    }).code);
+
+    result = result === 'use strict' ? '' : result;
     /* eslint-enable */
   } catch (ex) {
     error = ex.toString();
