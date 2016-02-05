@@ -14,15 +14,18 @@ class CodeContainer extends Component {
     const { currentValue, onChange } = this.props;
 
     return (
-      <div className="border-top" style={ styles.base }>
+      <div className="border-top" style={ styles.container }>
         <Codemirror
           options={{
             lineNumbers: true,
-            mode: 'javascript',
+            mode: {
+              name: 'javascript',
+              statementIndent: 2,
+            },
+            indentUnit: 2,
+            tabSize: 2,
           }}
-          style={{
-            height: 800,
-          }}
+          style={ styles.codeMirror }
           className="block"
           value={ currentValue }
           onChange={ debounce(onChange, 300).bind(this) } />
@@ -38,7 +41,10 @@ class CodeContainer extends Component {
 }
 
 const styles = {
-  base: {},
+  codeMirror: {
+    height: 800,
+  },
+  container: {},
 };
 
 export default CodeContainer;
