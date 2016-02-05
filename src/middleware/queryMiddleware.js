@@ -1,7 +1,6 @@
 import { stringify } from 'query-string';
 import { createHistory } from 'history';
 import base64 from 'base-64';
-import logThis from '../utils/logThis';
 
 const history = createHistory();
 
@@ -17,9 +16,10 @@ export default function queryMiddleware() {
       q: base64.encode(action.payload),
     });
 
-    history.pushState(null, `?${ queryString }`);
+    history.pushState(null, `${ window.location.pathname }?${ queryString }`);
 
-    logThis('Updating Query', `\n${ queryString }`);
+    console.log('window.location.pathname :: ', window.location.pathname);
+    console.log('Updating Query :: ', `\n${ queryString }`);
 
     return next(action);
   };
