@@ -35,15 +35,16 @@ const Navigator = (props) => {
                 isVisible={ exampleMenuVisible }
                 className="border bg-white p2 black">
                 {
-                  examples.map(list => {
+                  examples.map((list, index) => {
                     return (
-                      <div>
-                      <h5 className="mt1">{ list.title }</h5>
+                      <div key={ index }>
+                        <h5 className="mt1">{ list.title }</h5>
                         <ul className="mt1 mb2 list-reset">
                           {
                             list.examples.map((i, idx) => {
                               return (
                                 <li
+                                  key={ idx }
                                   className="blue ml2"
                                   style={ styles.link }
                                   onClick={ () => {
