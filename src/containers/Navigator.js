@@ -105,12 +105,12 @@ const Navigator = (props) => {
           <div
             style={ styles.link }
             onClick={ () => toggleVisbility('settingsVisible') }
-            className="inline-block white mr3">
+            className="inline-block white mr2">
             Settings <span style={ styles.caret }>▼</span>
             <Dropdown
               style={{
                 ...styles.dropdown,
-                ...{ right: '25px' },
+                ...{ right: '1rem' },
               }}
               isVisible={ settingsVisible }
               className="border bg-white black p1">
