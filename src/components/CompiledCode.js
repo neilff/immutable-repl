@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import stringify from 'json-stringify-pretty-compact';
 
 const CompiledCode = ({ codeString }) => {
@@ -18,7 +18,7 @@ const CompiledCode = ({ codeString }) => {
   }
 
   return (
-    <pre className="border-top p2" style={ styles.base }>
+    <pre className="p2 bg-lighten-4" style={ styles.base }>
       {
         result ? stringify(result) : <div className="red">{ error }</div>
       }
@@ -26,9 +26,21 @@ const CompiledCode = ({ codeString }) => {
   );
 };
 
+CompiledCode.defaultName = 'CompiledCode';
+CompiledCode.propTypes = {
+  /**
+   * The code to perform eval on
+   */
+  codeString: PropTypes.string,
+};
+CompiledCode.defaultProps = {
+  codeString: '',
+};
+
 const styles = {
   base: {
-    minHeight: 300,
+    overflowY: 'auto',
+    fontSize: '13px',
   },
 };
 

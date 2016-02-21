@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import Immutable from 'immutable';
 import base64 from 'base-64';
 import { parse } from 'query-string';
-import logThis from './utils/logThis';
 import defaultExample from './utils/defaultExample';
 
 import App from './containers/App';
@@ -20,8 +19,6 @@ const immutableKeys = Object.keys(Immutable);
 immutableKeys.map(i => global[i] = Immutable[i]);
 
 const initialState = parse(window.location.search);
-
-logThis('Initial State', initialState);
 
 const store = configureStore({
   code: Immutable.fromJS({
