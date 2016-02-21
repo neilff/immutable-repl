@@ -1,41 +1,35 @@
 import { fromJS } from 'immutable';
 
-export const TOGGLE_EXAMPLE_MENU = '@@repl/TOGGLE_EXAMPLE_MENU';
-export const TOGGLE_SPLIT_VIEW = '@@repl/TOGGLE_SPLIT_VIEW';
+export const TOGGLE_VISIBILITY = '@@repl/TOGGLE_VISIBILITY';
 
 const INITIAL_STATE = fromJS({
-  exampleMenuVisible: false,
-  isSplitView: false,
+  exampleVisible: false,
+  settingsVisible: false,
+  splitView: false,
 });
 
 function uiReducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
 
-  case TOGGLE_SPLIT_VIEW:
-    return state.set('isSplitView', action.payload);
-
-  case TOGGLE_EXAMPLE_MENU:
-    return state.set('exampleMenuVisible', action.payload);
+  case TOGGLE_VISIBILITY:
+    return state.set(action.payload.id, action.payload.state);
 
   default:
-    return state;
+    return state.merge(fromJS({
+      exampleVisible: false,
+      settingsVisible: false,
+    }));
   }
 }
 
-export function toggleSplitView() {
+export function toggleVisbility(id) {
   return (dispatch, getState) => {
     dispatch({
-      type: TOGGLE_SPLIT_VIEW,
-      payload: !getState().ui.get('isSplitView'),
-    });
-  };
-}
-
-export function toggleExampleMenu() {
-  return (dispatch, getState) => {
-    dispatch({
-      type: TOGGLE_EXAMPLE_MENU,
-      payload: !getState().ui.get('exampleMenuVisible'),
+      type: TOGGLE_VISIBILITY,
+      payload: {
+        id,
+        state: !getState().ui.get(id),
+      },
     });
   };
 }

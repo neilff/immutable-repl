@@ -18,9 +18,6 @@ export default function queryMiddleware() {
 
     history.pushState(null, `${ window.location.pathname }?${ queryString }`);
 
-    console.log('window.location.pathname :: ', window.location.pathname);
-    console.log('Updating Query :: ', `\n${ queryString }`);
-
     return next(action);
   };
 }

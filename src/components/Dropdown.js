@@ -17,9 +17,21 @@ const Dropdown = ({ isVisible, children, style, className }) => {
 
 Dropdown.displayName = 'Dropdown';
 Dropdown.propTypes = {
+  /**
+   * Children to render inside dropdown
+   */
   children: PropTypes.node,
+  /**
+   * Classnames to be applied to the dropdown
+   */
   className: PropTypes.string,
-  isVisible: PropTypes.bool.isRequired,
+  /**
+   * If the dropdown should display or not
+   */
+  isVisible: PropTypes.bool,
+  /**
+   * Styles to be applied to the dropdown
+   */
   style: PropTypes.object,
 };
 Dropdown.defaultProps = {
