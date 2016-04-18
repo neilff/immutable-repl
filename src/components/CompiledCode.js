@@ -11,7 +11,7 @@ const CompiledCode = ({ codeString }) => {
       presets: ['es2015', 'react', 'stage-0']
     }).code);
 
-    result = result === 'use strict' ? '' : result;
+    result = result === 'use strict' ? undefined : result;
     /* eslint-enable */
   } catch (ex) {
     error = ex.toString();
@@ -20,7 +20,7 @@ const CompiledCode = ({ codeString }) => {
   return (
     <pre className="p2 bg-lighten-4" style={ styles.base }>
       {
-        result ? stringify(result) : <div className="red">{ error }</div>
+        !error ? stringify(result) : <div className="red">{ error }</div>
       }
     </pre>
   );
